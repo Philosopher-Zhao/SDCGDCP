@@ -1,56 +1,49 @@
 # SDCGDCP
 
 ## Welcome to SDCGDCP
-**SDCGDCP (Prediction of miRNA-Disease Associations Based on Hybrid Gated GNN and Multi-Data Integration)** is a model designed for predicting miRNA-disease associations based on a hybrid gated Graph Neural Network (GNN) and multi-data integration. The model combines various types of similarity matrices and feature data to efficiently predict potential associations between miRNAs and diseases through a powerful GNN architecture.
+**SDCGDCP (Synergistic Drug Combination Prediction via Graphormer and Drug-Cell Line Pair Graph)** This study proposes SDCGDCP, a model for predicting drug combination synergy. It integrates multiple data types—drug structures, target activity, and cell line gene expression—to construct a comprehensive drug-cell line graph. The model utilizes a GatedGCN module and incorporates five structural encodings, followed by the Graphormer to capture complex network relationships. SDCGDCP demonstrated superior performance, achieving state-of-the-art results (AUROC: 0.923, AUPRC: 0.885) on the DrugCombDB dataset, with its effectiveness validated through ablation studies and case analyses.
 
 The flow chart of SDCGDCP is as follows:
 
-![示例图片](./框架图.tif)
+![示例图片](./框架图.png)
 
 ## Directory Structure
 
 ```markdown
 ├── Datasets
 │   ├── features
-│   │   └── features.csv           # Features of miRNA and diseases
-│   ├── samples					  
-│   │   ├── samples.csv            # Sample edges used in the model
-│   │   └── labels.csv             # labels for edges
-│   ├── similarly
-│   │   ├── D_gene.csv             # Disease gene similarity
-│   │   ├── D_lnc.csv              # Disease lncRNA similarity
-│   │   ├── D_mesh.csv             # Disease semantic similarity
-│   │   ├── M_gene.csv             # miRNA gene similarity
-│   │   ├── M_lnc.csv              # miRNA lncRNA similarity
-│   ├── MS.csv                     # Integrated similarity for miRNA
-│   ├── DS.csv                     # Integrated similarity for diseases
-│   └── M-D.csv                    # Association relationship between miRNA and diseases
-├── Result                         # Experiment logs
-│   ├── xxxx_xxx                   # Log results of running at a certain time
-│   │   ├── plot
-│   │   │   ├── imgs               # Images
-│   │   │   └── csv                # CSV files
-│   │   ├── pred                   # Prediction results for each fold
-│   └── └── parameters.txt         # Parameters and results
-├── model.py                       # Model code
-├── utils.py                       # Utility code
-└── train.py                       # Training code
+│   │   ├── Gene.csv             # Disease gene similarity
+│   │   ├── Target.csv             # Disease gene similarity
+│   │   ├── ECFP.csv             # Disease gene similarity
+│   │   └── Graph.csv             # Disease gene similarity
+│   └── samples					  
+│       └── samples.csv            # Sample edges used in the model
+├── config.py                       # Model code
+├── data_preprocess.py                       # Model code
+├── functional.py                       # Model code            
+├── layers.py                       # Model code
+├── main.py                       # Utility code
+├── model.py                       # Training code
+├── train_eval.py                       # Model code
+└── utils.py                       # Model code
 
-MS and DS are used for negative sample selection with RWR.
-```
+
 ## Installation and Requirements
 
-PMDGGM has been tested in a Python 3.9 environment. It is recommended to use the same library versions as specified. Using a conda virtual environment is also recommended to avoid affecting other parts of the system. Please follow the steps below.
+SDCGDCP has been tested in a Python 3.9 environment. It is recommended to use the same library versions as specified. Using a conda virtual environment is also recommended to avoid affecting other parts of the system. Please follow the steps below.
 
 Key libraries and versions:
 
 ```markdown
-├── torch              1.13.1
-├── torch-geometric    2.3.1
-├── torch-scatter      2.1.1+pt113cu116
-├── torch-sparse       0.6.15+pt113cu116
-├── matplotlib         3.5.3
-└── scikit-learn       1.0.2        
+├── torch              1.12.0+cu113
+├── torch-geometric    2.5.3
+├── torch-scatter      2.1.1
+├── torch-sparse       0.6.18
+├── networkx           3.2.1
+├── scikit-learn       1.4.2
+├── pandas             1.2.4
+├── matplotlib         3.4.3
+└── numpy              1.26.4        
 ```
 
 ### Step 1: Download Code and Data
@@ -70,7 +63,7 @@ Run the main script in the virtual environment:
 python main.py
 ```
 
-All results of the operation will be saved in the Result directory.
+All results of the operation will be saved in the current directory.
 
 ## Citation 
 
@@ -78,6 +71,6 @@ If you use our tool and code, please cite our article and mark the project to sh
 
 Citation format: 
 
-Yeqiang Wang, Sharen Yun, Yuchen Zhang and Xiujuan Lei, "Prediction of miRNA-Disease Associations Based on Hybrid Gated GNN and Multi-Data Integration," 2024 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), Lisbon, Portugal, 2024, pp. 1226-1231, doi: 10.1109/BIBM62325.2024.10822161.
+Yuchen Zhang, Bingzhe Zhao, Zhuoqun Fu, Yiming Han, Beidan Liu and Xiujuan Lei, "Synergistic Drug Combination Prediction via Graphormer and Drug-Cell Line Pair Graph," 2025 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), WuHan, China, 2025.
 
-Paper Link: [IEEE Xplore](https://ieeexplore.ieee.org/document/10822161) or [IEEE Computer Society Digital Library](https://www.computer.org/csdl/proceedings-article/bibm/2024/10822161/23onZOmMi9G)
+Paper Link:
