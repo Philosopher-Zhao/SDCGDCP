@@ -12,20 +12,20 @@ The flow chart of SDCGDCP is as follows:
 ```markdown
 ├── Datasets
 │   ├── features
-│   │   ├── Gene.csv             # Disease gene similarity
-│   │   ├── Target.csv             # Disease gene similarity
-│   │   ├── ECFP.csv             # Disease gene similarity
-│   │   └── Graph.csv             # Disease gene similarity
+│   │   ├── Gene.csv           
+│   │   ├── Target.csv            
+│   │   ├── ECFP.csv            
+│   │   └── Graph.csv             
 │   └── samples					  
-│       └── samples.csv            # Sample edges used in the model
-├── config.py                       # Model code
-├── data_preprocess.py                       # Model code
-├── functional.py                       # Model code            
-├── layers.py                       # Model code
-├── main.py                       # Utility code
-├── model.py                       # Training code
-├── train_eval.py                       # Model code
-└── utils.py                       # Model code
+│       └── samples.csv            
+├── config.py                     
+├── data_preprocess.py                       
+├── functional.py                            
+├── layers.py                      
+├── main.py                      
+├── model.py                      
+├── train_eval.py                      
+└── utils.py                     
 
 
 ## Installation and Requirements
@@ -71,6 +71,6 @@ If you use our tool and code, please cite our article and mark the project to sh
 
 Citation format: 
 
-Yuchen Zhang, Bingzhe Zhao, Zhuoqun Fu, Yiming Han, Beidan Liu and Xiujuan Lei, "Synergistic Drug Combination Prediction via Graphormer and Drug-Cell Line Pair Graph," 2025 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), WuHan, China, 2025.
+Yuchen Zhang, Bingzhe Zhao, Zhuoqun Fu, Yiming Han, Beidan Liu and Xiujuan Lei, "Synergistic Drug Combination Prediction via Graphormer and Drug-Cell Line Pair Graph," 2025 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), Wuhan, China, 2025.
 
 Paper Link:
