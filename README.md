@@ -5,7 +5,7 @@
 
 The flow chart of SDCGDCP is as follows:
 
-![示例图片]()
+![示例图片](./框架图.tif)
 
 ## Directory Structure
 
