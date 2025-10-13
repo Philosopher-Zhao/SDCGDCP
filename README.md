@@ -1,6 +1,83 @@
- # SDCGDCP
-**Abstract**
+# SDCGDCP
 
-   Drug combination synergy is crucial in pharmacology, as it can enhance disease treatment efficacy or reduce drug resistance when administered in combination. Accurate prediction of drug combination synergy is vital for optimizing therapeutic regimens and improving treatment effectiveness. Existing computational methods primarily rely on drug sequence and structural features, making them difficult to capture complex network relationships and global information—especially lacking the ability to perform cross-modal fusion. In this study, we proposed a method called SDCGDCP for predicting drug combination synergy. It processed drug molecular structures (graph structures and molecular fingerprints), target biological activity information and integrated cell line whole-genome expression profiles to construct multi-level combined node representations. A drug-cell line pair network was accordingly generated. SDCGDCP updated node and edge representations via a GatedGCN module and derived five types of structural encodings (centrality, spatial, edge, Laplacian positional and node-similarity encodings), after which the graph language model Graphormer is employed to capture long-range node interactions. Finally, drug combination synergy was predicted using an MLP and SoftMax classifier. Extensive evaluations shown that SDCGDCP outperforms other state-of-the-art methods on the DrugCombDB dataset, achieving an AUROC of 0.923 and AUPRC of 0.883. Ablation experiments validate the effectiveness of each feature and encoding module. Meanwhile, we conducted case analyses on the predicted drug combination synergies. The results are supported by evidence from several pharmaceutical studies. This highlights potential of SDCGDCP in enhancing drug synergy prediction and optimizing combination therapies.
+## Welcome to SDCGDCP
+**SDCGDCP (Prediction of miRNA-Disease Associations Based on Hybrid Gated GNN and Multi-Data Integration)** is a model designed for predicting miRNA-disease associations based on a hybrid gated Graph Neural Network (GNN) and multi-data integration. The model combines various types of similarity matrices and feature data to efficiently predict potential associations between miRNAs and diseases through a powerful GNN architecture.
 
-Once the paper is accepted in October, the model code will be made public.
+The flow chart of SDCGDCP is as follows:
+
+![示例图片]()
+
+## Directory Structure
+
+```markdown
+├── Datasets
+│   ├── features
+│   │   └── features.csv           # Features of miRNA and diseases
+│   ├── samples					  
+│   │   ├── samples.csv            # Sample edges used in the model
+│   │   └── labels.csv             # labels for edges
+│   ├── similarly
+│   │   ├── D_gene.csv             # Disease gene similarity
+│   │   ├── D_lnc.csv              # Disease lncRNA similarity
+│   │   ├── D_mesh.csv             # Disease semantic similarity
+│   │   ├── M_gene.csv             # miRNA gene similarity
+│   │   ├── M_lnc.csv              # miRNA lncRNA similarity
+│   ├── MS.csv                     # Integrated similarity for miRNA
+│   ├── DS.csv                     # Integrated similarity for diseases
+│   └── M-D.csv                    # Association relationship between miRNA and diseases
+├── Result                         # Experiment logs
+│   ├── xxxx_xxx                   # Log results of running at a certain time
+│   │   ├── plot
+│   │   │   ├── imgs               # Images
+│   │   │   └── csv                # CSV files
+│   │   ├── pred                   # Prediction results for each fold
+│   └── └── parameters.txt         # Parameters and results
+├── model.py                       # Model code
+├── utils.py                       # Utility code
+└── train.py                       # Training code
+
+MS and DS are used for negative sample selection with RWR.
+```
+## Installation and Requirements
+
+PMDGGM has been tested in a Python 3.9 environment. It is recommended to use the same library versions as specified. Using a conda virtual environment is also recommended to avoid affecting other parts of the system. Please follow the steps below.
+
+Key libraries and versions:
+
+```markdown
+├── torch              1.13.1
+├── torch-geometric    2.3.1
+├── torch-scatter      2.1.1+pt113cu116
+├── torch-sparse       0.6.15+pt113cu116
+├── matplotlib         3.5.3
+└── scikit-learn       1.0.2        
+```
+
+### Step 1: Download Code and Data
+
+Use the following command to download this project or download the zip file from the "Code" section at the top right:
+
+```bash
+git init 
+git clone https://github.com/Philosopher-Zhao/SDCGDCP.git
+```
+
+### Step 2: Run the Model
+
+Run the main script in the virtual environment:
+
+```bash
+python main.py
+```
+
+All results of the operation will be saved in the Result directory.
+
+## Citation 
+
+If you use our tool and code, please cite our article and mark the project to show your support，thank you!
+
+Citation format: 
+
+Yeqiang Wang, Sharen Yun, Yuchen Zhang and Xiujuan Lei, "Prediction of miRNA-Disease Associations Based on Hybrid Gated GNN and Multi-Data Integration," 2024 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), Lisbon, Portugal, 2024, pp. 1226-1231, doi: 10.1109/BIBM62325.2024.10822161.
+
+Paper Link: [IEEE Xplore](https://ieeexplore.ieee.org/document/10822161) or [IEEE Computer Society Digital Library](https://www.computer.org/csdl/proceedings-article/bibm/2024/10822161/23onZOmMi9G)
