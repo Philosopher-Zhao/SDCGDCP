@@ -26,7 +26,7 @@ The flow chart of SDCGDCP is as follows:
 ├── model.py                      
 ├── train_eval.py                      
 └── utils.py                     
-
+```
 
 ## Installation and Requirements
 
