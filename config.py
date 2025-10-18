@@ -3,7 +3,7 @@ class Config:
     drug_data_path = "Datasets/ECFP.csv"
     target_data_path = ("Datasets/Target.csv")
     cell_data_path = "Datasets/Gene.csv"
-    interaction_data_path = "Datasets/samples.csv"
+    interaction_data_path = "Datasets/samples/samples.csv"
     best_model_path = "best_model.pth"
     drug_graph_feature_path = "Datasets/Graph.csv"
 
@@ -27,5 +27,6 @@ class Config:
     result_file = "results.csv"
     gated_gcn_dropout = 0.4
     gated_gcn_batchnorm = True
+
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
