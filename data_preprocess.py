@@ -74,7 +74,7 @@ def create_graph():
         edge_index=torch.tensor(edge_index).t().contiguous(),
         edge_attr=torch.stack(edge_attr),
         y=torch.tensor(edge_labels, dtype=torch.float32),
-        edge_info=edge_info  # 新增属性
+        edge_info=edge_info  
     )
 
     indices = range(len(data.y))
@@ -141,5 +141,6 @@ def create_graph():
     train_loader = DataLoader(train_batches, shuffle=True, num_workers=0, pin_memory=True)
     val_loader = DataLoader(val_batches, shuffle=False, num_workers=0, pin_memory=True)
     test_loader = DataLoader(test_batches, shuffle=False, num_workers=0, pin_memory=True)
+
 
     return train_loader, val_loader, test_loader, data, data, data
