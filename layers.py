@@ -109,7 +109,7 @@ class GraphormerAttentionHead(nn.Module):
         projected_x = self.sim_proj(x)
         x_norm = F.normalize(projected_x, p=2, dim=-1)
         d = torch.abs(x_norm @ x_norm.t())
-        a = (a + self.gamma_b*b + self.gamma_c * c ) * batch_mask_neg_inf
+        a = (a + self.gamma_b*b + self.gamma_c * c + self.gamma_d*d ) * batch_mask_neg_inf
         softmax = torch.softmax(a, dim=-1) * batch_mask_zeros
         x = softmax.mm(value)
         return x
@@ -245,4 +245,5 @@ class LaplacianPositionalEncoding(nn.Module):
             torch.sin(self.freq_linspace.to(eig_vecs.device) * eig_vecs),
             torch.cos(self.freq_linspace.to(eig_vecs.device) * eig_vecs)
         ], dim=-1)
+
         return self.linear(pe)
